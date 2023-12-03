@@ -1,0 +1,33 @@
+import matplotlib.pyplot as plt
+
+# Data
+countries = ['China', 'India', 'Europe', 'US']
+men_paid = [72, 68, 70, 76]
+women_paid = [62, 58, 60, 66]
+men_unpaid = [28, 32, 30, 24]
+women_unpaid = [38, 42, 40, 34]
+
+# Create a bar chart
+width = 0.35
+index = range(len(countries))
+
+plt.bar(index, men_paid, width, label='Men (Paid)', color='b')
+plt.bar([i + width for i in index], women_paid, width, label='Women (Paid)', color='g')
+plt.bar([i + 2 * width for i in index], men_unpaid, width, label='Men (Unpaid)', color='r')
+plt.bar([i + 3 * width for i in index], women_unpaid, width, label='Women (Unpaid)', color='purple')
+
+plt.xlabel('Country')
+plt.ylabel('Percentage of Total Work')
+plt.title('Paid and Unpaid Work by Gender and Country')
+plt.xticks([i + 1.5 * width for i in index], countries)
+plt.legend()
+
+# Rotate x-axis labels for better readability
+plt.xticks(rotation=45)
+
+# Add a grid to the chart
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+# Show the chart
+plt.tight_layout()
+plt.show()
